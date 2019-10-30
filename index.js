@@ -66,13 +66,17 @@ server.post('/patients', function (req, res, next)
 
 
   // Make sure name is defined
-  if (req.params.name === undefined ) {
+  if (req.params.firstname === undefined ) {
     // If there are any errors, pass them to next in the correct format
-    return next(new restify.InvalidArgumentError('name must be supplied'))
+    return next(new restify.InvalidArgumentError('firstname must be supplied'))
   }
-  if (req.params.age === undefined ) {
+  if (req.params.lastname === undefined ) {
     // If there are any errors, pass them to next in the correct format
-    return next(new restify.InvalidArgumentError('age must be supplied'))
+    return next(new restify.InvalidArgumentError('lastname must be supplied'))
+  }
+  if (req.params.DOB === undefined ) {
+    // If there are any errors, pass them to next in the correct format
+    return next(new restify.InvalidArgumentError('DOB must be supplied'))
   }
   if (req.params.gender === undefined ) {
     // If there are any errors, pass them to next in the correct format
@@ -80,8 +84,9 @@ server.post('/patients', function (req, res, next)
   }
 
   var newpatients = {
-		name: req.params.name, 
-    age: req.params.age,
+    firstname: req.params.firstname,
+		lastname: req.params.lastname, 
+    DOB: req.params.DOB,
     gender: req.params.gender
 	}
 
